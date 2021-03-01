@@ -1,2 +1,6 @@
 __pycache__/
+.fenv
 fenv/
+.vscode/
+.DS_Store
+Thumbs.db
