@@ -1,25 +1,8 @@
-from flask import Flask, render_template, url_for, flash, redirect
-from forms import RegistrationForm, LoginForm
+from flask import render_template, url_for, flash, redirect
+from flaskblog.forms import RegistrationForm, LoginForm
+from flaskblog.models import User, Post
+from flaskblog import app
 
-
-app = Flask(__name__)
-app.config['SECRET_KEY'] = 'ccac162550f28abf4bd7d01444e56745'
-
-
-posts =[
-    {
-        'author': 'Ricardo Sanchez',
-        'title': 'Blog Post 1',
-        'content': 'First blog post content',
-        'date_posted': 'April 20, 2018'
-    },
-    {
-        'author': 'Emma Sanchez',
-        'title': 'Blog Post 2',
-        'content': 'Blog post from Emma content',
-        'date_posted': 'March 13, 2019'
-    }
-]
 
 @app.route('/')
 @app.route('/home')
@@ -53,7 +36,3 @@ def login():
             flash(f'Login unsuccessful. Please check username and password', 'danger')
 
     return render_template('login.html', title='Login', form=form)
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
